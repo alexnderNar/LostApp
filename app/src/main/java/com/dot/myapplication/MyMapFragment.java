@@ -49,7 +49,7 @@ public class MyMapFragment extends Fragment {
             actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor(PrimColor)));
         }
         mMapView.onResume();// needed to get the map to display immediately
-
+        //
         try {
             MapsInitializer.initialize(getActivity().getApplicationContext());
         } catch (Exception e) {
