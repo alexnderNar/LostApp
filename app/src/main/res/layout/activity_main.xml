@@ -15,13 +15,20 @@
         android:id="@+id/frame_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
-
+        android:layout_below="@+id/toolbar"
         />
+        <FrameLayout
+            android:id="@+id/frame_map_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+
+            />
 
 
 
-        <include layout="@layout/toolbar"/>
+        <include layout="@layout/toolbar"
+            android:id="@+id/toolbar" />
 
 
 

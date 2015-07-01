@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     Fragment fragMap;
     Fragment fragMapTemp;
     FragmentTransaction fTrans;
+
 
 
     @Override
@@ -91,23 +93,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = menuItem.getItemId();
         fTrans = getFragmentManager().beginTransaction();
 
-
         switch (id){
             case R.id.navigation_item_1:
                 Log.d("mytag","конпка прожалась");
-
-                fTrans.replace(R.id.frame_container, fragMap);
+                fTrans.remove(fragMap);
+                fTrans.replace(R.id.frame_map_container, frag1);
 
                 break;
             case R.id.navigation_item_2:
-
-                fTrans.replace(R.id.frame_container,fragMap);
+                fTrans.replace(R.id.frame_map_container,fragMap);
 
                 break;
             default:
                 break;
 
         }
+        fTrans.addToBackStack(null);
         fTrans.commit();
         menuItem.setChecked(true);
         drawer_layout.closeDrawers();
@@ -122,6 +123,21 @@ public boolean onCreateOptionsMenu(Menu menu) {
     // Inflate the menu; this adds items to the action bar if it is present.
     getMenuInflater().inflate(R.menu.menu_main, menu);
     return true;
+}
+
+@Override
+public void onBackPressed() {
+    if(drawer_layout.isDrawerOpen(Gravity.LEFT)){
+        drawer_layout.closeDrawer(Gravity.LEFT);
+    }
+    else if (getFragmentManager().getBackStackEntryCount() > 0){
+        getFragmentManager().popBackStack();
+    }
+
+    else {
+        super.onBackPressed();
+    }
+
 }
 }
 

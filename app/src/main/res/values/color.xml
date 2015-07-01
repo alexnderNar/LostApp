@@ -10,5 +10,7 @@
     <color name="icons">#212121</color>
     <color name="divider">#B6B6B6</color>
     <color name="primary_translucent">#B7FF9800</color>
+    <color name="primary_not_translucent">#FFFF9800</color>
+
 
 </resources>

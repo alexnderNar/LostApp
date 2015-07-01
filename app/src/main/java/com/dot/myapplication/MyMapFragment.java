@@ -88,5 +88,10 @@ public class MyMapFragment extends Fragment {
         return v;
     }
 
-
+    @Override
+    public void onStop() {
+        String PrimColor = "#" + Integer.toHexString(getResources().getColor(R.color.primary_not_translucent));
+        actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor(PrimColor)));
+        super.onStop();
+    }
 }
