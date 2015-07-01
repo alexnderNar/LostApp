@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.navigation_item_1:
                 Log.d("mytag","конпка прожалась");
                 fTrans.remove(fragMap);
-                fTrans.replace(R.id.frame_map_container, frag1);
+                fTrans.replace(R.id.frame_container, frag1);
 
                 break;
             case R.id.navigation_item_2:
