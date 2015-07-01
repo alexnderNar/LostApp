@@ -1,10 +1,17 @@
 package com.dot.myapplication;
 
+import android.support.v7.app.ActionBar;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.app.Fragment;
+
+import android.support.v7.app.AppCompatActivity;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -22,6 +29,7 @@ public class MyMapFragment extends Fragment {
 
     MapView mMapView;
     private GoogleMap googleMap;
+    ActionBar actionBar;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -31,7 +39,15 @@ public class MyMapFragment extends Fragment {
                 false);
         mMapView = (MapView) v.findViewById(R.id.mapView);
         mMapView.onCreate(savedInstanceState);
+        String PrimColor = "#" + Integer.toHexString(getResources().getColor(R.color.primary_translucent));
 
+        //Log.d("mylog",PrimColor);
+        actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+        if (actionBar != null) {
+
+            actionBar.setTitle("Map");
+            actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor(PrimColor)));
+        }
         mMapView.onResume();// needed to get the map to display immediately
 
         try {
@@ -46,9 +62,16 @@ public class MyMapFragment extends Fragment {
         double latitude = 17.385044;
         double longitude = 78.486671;
 
+
         // create marker
         MarkerOptions marker = new MarkerOptions().position(
                 new LatLng(latitude, longitude)).title("Hello Maps");
+        MarkerOptions marker1 = new MarkerOptions().position(
+                new LatLng(0, 0)).title("Hello Maps");
+
+
+
+
         /*// Changing marker icon
         marker.icon(BitmapDescriptorFactory
                 .defaultMarker(BitmapDescriptorFactory.HUE_ROSE));
@@ -61,10 +84,9 @@ public class MyMapFragment extends Fragment {
                 .newCameraPosition(cameraPosition));*/
 
         // Perform any camera updates here
+
         return v;
     }
-
-
 
 
 }

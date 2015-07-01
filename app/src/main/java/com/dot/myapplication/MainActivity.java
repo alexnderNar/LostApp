@@ -4,13 +4,10 @@ import android.app.Fragment;
 
 import android.app.FragmentTransaction;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
+
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -20,9 +17,9 @@ import android.view.MenuItem;
 import android.view.View;
 
 
-
-
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+
 
 
 
@@ -33,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     Fragment frag1;
 
     Fragment fragMap;
+    Fragment fragMapTemp;
     FragmentTransaction fTrans;
 
 
@@ -47,18 +45,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         frag1 = new Fragment1();
         fragMap = new MyMapFragment();
+        fragMapTemp = new MyMapFragment();
+
+
 
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_action_menu);
-        Log.d("mytag", "ЧЕТО РАБОТАЕТ НАХ");
+        if(getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_action_menu);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
-
-        final ActionBar ab = getSupportActionBar();
+        /*final ActionBar ab = getSupportActionBar();
         //ab.setHomeAsUpIndicator(R.drawable.ic_action_menu);
-        ab.setDisplayHomeAsUpEnabled(true);
+        ab.setDisplayHomeAsUpEnabled(true);*/
 
         drawer_layout = (DrawerLayout) findViewById(R.id.drawer_layout);
         nav_draw = (NavigationView) findViewById(R.id.nav_draw);
@@ -89,19 +91,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = menuItem.getItemId();
         fTrans = getFragmentManager().beginTransaction();
 
+
         switch (id){
             case R.id.navigation_item_1:
                 Log.d("mytag","конпка прожалась");
-                fTrans.replace(R.id.frame_container,frag1);
+
+                fTrans.replace(R.id.frame_container, fragMap);
+
                 break;
             case R.id.navigation_item_2:
-                fTrans.replace(R.id.frame_container,fragMap);
 
-                /*android.app.FragmentManager manager = getFragmentManager();
-                FragmentTransaction transaction = manager.beginTransaction();
-                MapFragment fragment = new MapFragment();
-                transaction.add(R.id.frame_container, fragment);
-                transaction.commit();*/
+                fTrans.replace(R.id.frame_container,fragMap);
 
                 break;
             default:
