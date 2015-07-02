@@ -1,4 +1,4 @@
-package com.dot.myapplication;
+package com.dot.myapplication.Application;
 
 import android.support.v7.app.ActionBar;
 import android.graphics.Color;
@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
+import com.dot.myapplication.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
