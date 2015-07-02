@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     Fragment fragMap;
     Fragment fragMapTemp;
+    Fragment fragActionMap;
     FragmentTransaction fTrans;
 
 
@@ -48,6 +49,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         frag1 = new Fragment1();
         fragMap = new MyMapFragment();
         fragMapTemp = new MyMapFragment();
+        fragActionMap = new ActionMapFragment();
+
 
 
 
@@ -96,12 +99,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch (id){
             case R.id.navigation_item_1:
                 fTrans.remove(fragMap);
-                fTrans.replace(R.id.frame_container, frag1);
-
+                fTrans.replace(R.id.frame_map_container, fragActionMap);
                 break;
             case R.id.navigation_item_2:
                 fTrans.replace(R.id.frame_map_container,fragMap);
 
+                break;
+            case R.id.navigation_sub_item_1:
+                fTrans.remove(fragMap);
+                fTrans.replace(R.id.frame_container, frag1);
                 break;
             default:
                 break;
