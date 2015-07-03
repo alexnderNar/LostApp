@@ -7,6 +7,7 @@
             android:icon="@drawable/ic_action_map"
             android:title="@string/navigation_item_1">
 
+
         </item>
         <item
             android:id="@+id/navigation_item_2"

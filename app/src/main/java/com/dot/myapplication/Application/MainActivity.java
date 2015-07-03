@@ -14,8 +14,12 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
 
 import com.dot.myapplication.R;
+
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -37,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +55,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fragMap = new MyMapFragment();
         fragMapTemp = new MyMapFragment();
         fragActionMap = new ActionMapFragment();
-
 
 
 
@@ -89,6 +93,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return super.onOptionsItemSelected(item);
     }
 
+    void RemoveMapFragments(){ //Нужно т.к. frame_map_container перекрывает frame_container
+        fTrans.remove(fragActionMap);
+        fTrans.remove(fragMap);
+    }
 
     @Override
     public boolean onNavigationItemSelected(MenuItem menuItem) {
@@ -98,7 +106,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         switch (id){
             case R.id.navigation_item_1:
-                fTrans.remove(fragMap);
+                //fTrans.remove(fragMap);
                 fTrans.replace(R.id.frame_map_container, fragActionMap);
                 break;
             case R.id.navigation_item_2:
@@ -106,8 +114,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                 break;
             case R.id.navigation_sub_item_1:
-                fTrans.remove(fragMap);
+                RemoveMapFragments();
                 fTrans.replace(R.id.frame_container, frag1);
+
                 break;
             default:
                 break;

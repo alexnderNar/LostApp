@@ -16,11 +16,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/toolbar"
+        android:tag="tag-name"
         />
         <FrameLayout
             android:id="@+id/frame_map_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:tag="tag-name"
+
 
 
             />
